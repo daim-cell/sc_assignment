@@ -1,6 +1,11 @@
 var fs = require("fs");
 const json2html = require('node-json2html');
 
+let trans={
+	'<>':'div', 'class':'cards-container', 'html': function(){
+        return( json2html.transform(JSON.parse(data),transform) );
+}};
+
 let transform = {'<>':'figure','class':'card','html':
 [{'<>':'h2','class':'card_name','html':'${productName}'},
 {'<>':'p', 'class':"card__detail",'html':
@@ -21,7 +26,7 @@ let data = fs.readFileSync('./data/data.json');
     
 
 function view(templateName, res) {
-	let html = json2html.transform(JSON.parse(data),transform);	
+	let html = json2html.transform({},trans);	
 	var fileContent = fs.readFileSync('./view/' + templateName + '.html', 'utf8');
 	res.write(fileContent);
 	res.write(html);
