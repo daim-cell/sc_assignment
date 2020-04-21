@@ -1,0 +1,24 @@
+{
+  "name": "assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daim-cell/sc_assignment.git"
+  },
+  "author": "Daim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daim-cell/sc_assignment/issues"
+  },
+  "homepage": "https://github.com/daim-cell/sc_assignment#readme",
+  "dependencies": {
+    "node-json2html": "^1.4.0",
+    "renderjson": "^1.4.0"
+  }
+}
