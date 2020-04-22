@@ -7,22 +7,24 @@ let trans={
 }};
 
 let transform = {'<>':'figure','class':'card','html':
-[{'<>':'h2','class':'card_name','html':'${productName}'},
+[{'<>':'div', 'class':'card__hero', 'html' :
+[{'<>': 'img', 'src':'data/img/${image}','class':'laptop_img'}]},
+{'<>':'h2','class':'card__name','html':'${productName}'},
 {'<>':'p', 'class':"card__detail",'html':
 [{"<>":'span', 'class':"emoji-left",'text':'🖥'}],
 'text':'${screen}'},
 {'<>':'p', 'class':"card__detail",'html':
 [{"<>":'span', 'class':"emoji-left",'text':'🧮'}],
 'text':'${cpu}'},
-{'<>':'div','class':'card_footer','html':
-[{'<>':'p','class':'card_price','html':'$${price}'},
-{'<>':'a','href':'laptop.html','class':'card_link', 'text':'Check it out', 'html':
+{'<>':'div','class':'card__footer','html':
+[{'<>':'p','class':'card__price','html':'$${price}'},
+{'<>':'a','href':'/?id=${id}','class':'card__link', 'text':'Check it out', 'html':
 [{'<>': 'span', 'class':"emoji-right", 'text':'👉'}]}
 ]
 }
 ]};
     
-let data = fs.readFileSync('./data/data.json');
+let data = fs.readFileSync('./view/data/data.json');
     
 
 function view(templateName, res) {
