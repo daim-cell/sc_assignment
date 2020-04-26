@@ -1,6 +1,8 @@
 const http = require('http');
 var render = require("./render");
 var detail = require('./detail')
+
+var fs = require('fs')
 var commonHeader = { 'Content-Type': 'html' };
 const hostname = '127.0.0.1';
 var url=  require('url');
@@ -24,6 +26,33 @@ if (req.url === "/") {
       res.writeHead(200, commonHeader);
       render.view("overview", res);
       res.end();
+    } 
+    
+    	else {
+      req.on("data", function (postBody) {
+        var query = querystring.parse(postBody.toString());
+        res.writeHead(303, { "location": "/" + query.username });
+        res.end();
+      })
+    }
+  }
+  else if (req.url.startsWith("/data/img/"))
+    {
+    	let data = fs.readFileSync('./view' + req.url);
+    	res.write(data);
+    	res.end();
+    }
+}
+
+function laptop(req, res) {
+  const queryObject = url.parse(req.url,true).query;
+  id=queryObject.id;
+  console.log(id);
+  if (id > -1) {
+    if (req.method.toLowerCase() === "get") {
+      res.writeHead(200, commonHeader);
+      detail.view("laptop", res, id);
+      res.end();
     } else {
       req.on("data", function (postBody) {
         var query = querystring.parse(postBody.toString());
@@ -34,10 +63,7 @@ if (req.url === "/") {
   }
 }
 
-function laptop(req, res) {
-  const queryObject = url.parse(req.url,true).query;
-  id=queryObject.id;
-  console.log(id);
+function image(req, res) {
   if (id > -1) {
     if (req.method.toLowerCase() === "get") {
       res.writeHead(200, commonHeader);
