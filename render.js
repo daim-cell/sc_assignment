@@ -8,7 +8,7 @@ let trans={
 
 let transform = {'<>':'figure','class':'card','html':
 [{'<>':'div', 'class':'card__hero', 'html' :
-[{'<>': 'img', 'src':'data/img/${image}','class':'laptop_img'}]},
+[{'<>': 'img', 'src':'data/img/${image}','class':'card__img'}]},
 {'<>':'h2','class':'card__name','html':'${productName}'},
 {'<>':'p', 'class':"card__detail",'html':
 [{"<>":'span', 'class':"emoji-left",'text':'🖥'}],
